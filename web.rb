@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/api/v1/rapportive/:email' do
-  call_api params[:email]
+  json call_api params[:email]
 end
 
 # Sends a query to the undocumented Rapportive API
@@ -31,7 +31,7 @@ def call_api(email)
     if response.nil?
       false
     elsif response['success'] != 'nothing_useful'
-      json response['contact']
+      response['contact']
     end
   end
 end
