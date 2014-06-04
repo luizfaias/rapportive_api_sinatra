@@ -3,6 +3,10 @@ require 'sinatra/json'
 require 'json'
 require 'open-uri'
 
+get '/' do
+  "Welcome to the Rapportive API demo!<br>Try this link: <a href='/api/v1/rapportive/luizfaias@gmail.com'>luizfaias@gmail.com</a>"
+end
+
 get '/api/v1/rapportive/:email' do
   call_api params[:email]
 end
