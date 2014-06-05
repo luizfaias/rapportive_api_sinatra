@@ -4,7 +4,9 @@ require 'json'
 require 'open-uri'
 
 get '/' do
-  "Welcome to the Rapportive API demo!<br>Try this link: <a href='/api/v1/rapportive/luizfaias@gmail.com'>luizfaias@gmail.com</a>"
+  "Welcome to the Rapportive API demo!
+  <br><br>
+  Usage: <a href='/api/v1/rapportive/luizfaias@gmail.com'>/api/v1/rapportive/user@email.com</a>"
 end
 
 get '/api/v1/rapportive/:email' do
@@ -26,7 +28,6 @@ def call_api(email)
   elsif response['status'] == 200 && session_token
     header = { 'X-Session-Token' => session_token }
 
-    # Create a Profile for valid email
     response = exp_backoff 2, profile_url, header
     if response.nil?
       false
